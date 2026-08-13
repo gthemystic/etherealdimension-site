@@ -79,7 +79,43 @@ export default function Home() {
           <span className="text-[13px] text-text-dim">Austin DoT · City of Austin</span>
         </div>
         <div className="grid gap-6 md:grid-cols-2">
-          {/* Card 1 */}
+          {/* Card 1: Ethereal Search — agentic RAG for engineering teams */}
+          <article className="overflow-hidden rounded-[10px] border border-line bg-ink-2">
+            <a
+              href="https://etherealdimension.io/ethereal-search/explorer"
+              target="_blank"
+              rel="noreferrer"
+              className="block"
+            >
+              <div className="relative flex h-[200px] items-center justify-center overflow-hidden bg-gradient-to-br from-[#0E1A22] to-ink">
+                <div className="absolute inset-[16%] rounded-lg border border-accent/30" />
+                <div className="scanline absolute left-[12%] right-[12%] h-[2px] bg-accent shadow-[0_0_22px_var(--color-accent)]" />
+                <div className="relative z-10 w-[76%] rounded-lg border border-line bg-ink/80 p-4 backdrop-blur-sm">
+                  <div className="flex items-center gap-2 text-[11px] text-text-dim">
+                    <span className="inline-block h-2 w-2 rounded-full bg-accent" />
+                    <span>ethereal-explorer</span>
+                    <span className="ml-auto">agentic RAG</span>
+                  </div>
+                  <div className="mt-3 h-2 w-full rounded bg-line" />
+                  <div className="mt-2 h-2 w-4/5 rounded bg-line" />
+                  <div className="mt-2 h-2 w-3/5 rounded bg-accent/40" />
+                </div>
+              </div>
+              <div className="p-7 pb-8">
+                <h3 className="font-display text-[22px] font-[400] text-text">Ethereal Search</h3>
+                <p className="mt-2.5 text-[14px] leading-[1.6] text-text-dim">
+                  Agentic RAG for engineering teams — Perplexity sonar-pro, Groq, LangChain,
+                  a Neo4j knowledge graph, and n8n orchestration that search across specs, drawings,
+                  and infrastructure records with grounded, traceable answers.
+                </p>
+                <div className="mt-4 flex gap-5 text-[12px] font-medium text-accent">
+                  <span>Live product</span>
+                  <span>Multi-modal RAG</span>
+                </div>
+              </div>
+            </a>
+          </article>
+          {/* Card 2 */}
           <article className="overflow-hidden rounded-[10px] border border-line bg-ink-2">
             <div className="relative h-[200px] overflow-hidden bg-gradient-to-br from-[#123B34] to-ink">
               <Image
@@ -104,7 +140,7 @@ export default function Home() {
               </div>
             </div>
           </article>
-          {/* Card 2 */}
+          {/* Card 3 */}
           <article className="overflow-hidden rounded-[10px] border border-line bg-ink-2">
             <div className="relative h-[200px] overflow-hidden bg-gradient-to-br from-[#123B34] to-ink">
               <Image

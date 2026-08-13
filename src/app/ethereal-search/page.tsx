@@ -37,11 +37,17 @@ export default function EtherealSearchPage() {
         <p className="mt-6 max-w-[520px] text-[16px] leading-[1.7] text-text-dim">
           AI-native retrieval for engineering documents — where AI meets the ethereal. Multi-agent RAG
           across specifications, drawings, and infrastructure records, with grounded answers you can trace.
+          LangChain-orchestrated agentic chains, Perplexity retrieval, and Groq-powered chat.
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
-          <span className="rounded-md bg-accent px-6 py-3 text-[14px] font-semibold text-ink">
-            Preview coming soon
-          </span>
+          <a
+            href="https://etherealdimension.io/ethereal-search/explorer"
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-md bg-accent px-6 py-3 text-[14px] font-semibold text-ink transition-opacity hover:opacity-90"
+          >
+            Open the live product →
+          </a>
           <Link
             href="/"
             className="rounded-md border border-line px-6 py-3 text-[14px] text-text transition-colors hover:border-text-dim"
@@ -49,6 +55,44 @@ export default function EtherealSearchPage() {
             ← Back to home
           </Link>
         </div>
+        <dl className="mt-16 grid w-full max-w-2xl grid-cols-2 gap-x-8 gap-y-8 border-t border-line pt-10 text-left sm:grid-cols-3">
+          <div>
+            <dt className="font-display text-[20px] text-paper">LangChain</dt>
+            <dd className="mt-1.5 text-[12px] uppercase tracking-[0.06em] text-text-dim">
+              Agentic chains
+            </dd>
+          </div>
+          <div>
+            <dt className="font-display text-[20px] text-paper">Perplexity sonar-pro</dt>
+            <dd className="mt-1.5 text-[12px] uppercase tracking-[0.06em] text-text-dim">
+              Search + citations
+            </dd>
+          </div>
+          <div>
+            <dt className="font-display text-[20px] text-paper">Groq · Llama 3.3</dt>
+            <dd className="mt-1.5 text-[12px] uppercase tracking-[0.06em] text-text-dim">
+              Engineering chat
+            </dd>
+          </div>
+          <div>
+            <dt className="font-display text-[20px] text-paper">Neo4j</dt>
+            <dd className="mt-1.5 text-[12px] uppercase tracking-[0.06em] text-text-dim">
+              Knowledge graph
+            </dd>
+          </div>
+          <div>
+            <dt className="font-display text-[20px] text-paper">n8n</dt>
+            <dd className="mt-1.5 text-[12px] uppercase tracking-[0.06em] text-text-dim">
+              Workflow orchestration
+            </dd>
+          </div>
+          <div>
+            <dt className="font-display text-[20px] text-paper">Multi-OCR</dt>
+            <dd className="mt-1.5 text-[12px] uppercase tracking-[0.06em] text-text-dim">
+              DeepSeek · Gemini · Mistral
+            </dd>
+          </div>
+        </dl>
       </section>
 
       <footer className="flex flex-col gap-3 border-t border-line px-6 py-8 text-[12px] text-text-dim sm:flex-row sm:items-center sm:justify-between sm:px-8">
