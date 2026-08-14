@@ -32,7 +32,7 @@ export const defaultSiteConfig: SiteConfig = {
   ],
   products: [
     { label: "Hylios", desc: "AR + ML room scanner for iPhone", href: "#hylios" },
-    { label: "Ethereal Search", desc: "Agentic RAG for engineering teams", href: "/ethereal-search" },
+    { label: "Ethereal Search", desc: "Agentic RAG for engineering teams", href: "https://ethereal-dimension-search.vercel.app" },
     { label: "TracePass", desc: "Supply-chain provenance, RAG-powered", href: "#tracepass" },
     { label: "GovSlack", desc: "Governed AI workspaces for agencies", href: "#govslack" },
   ],
