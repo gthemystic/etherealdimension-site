@@ -41,7 +41,7 @@ export default function EtherealSearchPage() {
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <a
-            href="https://etherealdimension.io/ethereal-search/explorer"
+            href="https://ethereal-dimension-search.vercel.app"
             target="_blank"
             rel="noreferrer"
             className="rounded-md bg-accent px-6 py-3 text-[14px] font-semibold text-ink transition-opacity hover:opacity-90"

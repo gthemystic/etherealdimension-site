@@ -18,7 +18,7 @@ const questions = [
     q: "What's hiding in your engineering documents?",
     a: "Ask anything across specs, drawings, and infrastructure records — grounded answers with citations.",
     cta: "Search your universe",
-    href: "https://etherealdimension.io/ethereal-search/explorer",
+    href: "https://ethereal-dimension-search.vercel.app",
     tag: "Ethereal Search",
   },
   {
@@ -218,7 +218,7 @@ export default async function Home() {
           {/* Ethereal Search — live product */}
           <article className="overflow-hidden rounded-[10px] border border-line bg-ink-2">
             <a
-              href="https://etherealdimension.io/ethereal-search/explorer"
+              href="https://ethereal-dimension-search.vercel.app"
               target="_blank"
               rel="noreferrer"
               className="block"
@@ -229,7 +229,7 @@ export default async function Home() {
                 <div className="relative z-10 w-[76%] rounded-lg border border-line bg-ink/80 p-4 backdrop-blur-sm">
                   <div className="flex items-center gap-2 text-[11px] text-text-dim">
                     <span className="inline-block h-2 w-2 rounded-full bg-accent" />
-                    <span>ethereal-explorer</span>
+                    <span>ethereal-dimension-search</span>
                     <span className="ml-auto">agentic RAG</span>
                   </div>
                   <div className="mt-3 h-2 w-full rounded bg-line" />
