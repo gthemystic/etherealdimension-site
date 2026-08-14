@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import NavBar from "@/components/NavBar";
 
 const stack = [
   "RAG",
@@ -78,26 +79,7 @@ const capabilities = [
 export default function Home() {
   return (
     <>
-      <header className="sticky top-0 z-20 border-b border-line bg-ink/85 backdrop-blur-md">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 sm:px-8">
-          <Link href="/" className="text-[13px] font-semibold uppercase tracking-[0.14em] text-paper">
-            Ethereal <span className="text-accent">Dimension</span>
-          </Link>
-          <nav className="hidden items-center gap-8 text-[13px] text-text-dim md:flex">
-            <a href="#platform" className="transition-colors hover:text-text">Platform</a>
-            <a href="#questions" className="transition-colors hover:text-text">Questions</a>
-            <a href="#work" className="transition-colors hover:text-text">Work</a>
-            <a href="#hylios" className="transition-colors hover:text-text">Hylios</a>
-            <Link href="/ethereal-search" className="transition-colors hover:text-text">Ethereal Search</Link>
-          </nav>
-          <a
-            href="#cta"
-            className="rounded-full bg-accent px-[18px] py-2 text-[12.5px] font-semibold text-ink transition-opacity hover:opacity-90"
-          >
-            Partner with us
-          </a>
-        </div>
-      </header>
+      <NavBar />
 
       {/* Hero — agentic platform front and center */}
       <section className="mx-auto max-w-6xl px-6 pt-24 pb-16 sm:px-8 sm:pt-32">
@@ -387,6 +369,89 @@ export default function Home() {
               className="object-cover opacity-40 mix-blend-screen"
               sizes="(max-width: 1024px) 100vw, 40vw"
             />
+          </div>
+        </div>
+      </section>
+
+      {/* Philosophy */}
+      <section id="philosophy" className="border-y border-line bg-ink-2/40">
+        <div className="mx-auto max-w-6xl px-6 py-24 sm:px-8">
+          <div className="max-w-3xl">
+            <p className="text-[12px] uppercase tracking-[0.22em] text-accent">Philosophy</p>
+            <h2 className="mt-4 font-display text-[36px] font-[340] leading-[1.08] text-text sm:text-[44px]">
+              Intelligence for the built world earns trust through <em className="italic text-accent">restraint</em>.
+            </h2>
+            <p className="mt-6 max-w-2xl text-[15px] leading-[1.7] text-text-dim">
+              Cities, infrastructure, and supply chains are not demo environments — failures have
+              real consequences. So we build the way the built world demands: provable, auditable,
+              and boring where it matters.
+            </p>
+          </div>
+          <div className="mt-14 grid gap-10 md:grid-cols-2">
+            <div className="border-t border-line pt-6">
+              <span className="font-display text-[15px] text-accent">01</span>
+              <h3 className="mt-3 font-display text-[22px] font-[400] text-text">Deployed, not demoed</h3>
+              <p className="mt-2.5 text-[14px] leading-[1.6] text-text-dim">
+                Systems run live in cities and infrastructure before we talk about them. Proof comes
+                from deployments — Austin DoT, production dashboards, real operator workflows.
+              </p>
+            </div>
+            <div className="border-t border-line pt-6">
+              <span className="font-display text-[15px] text-accent">02</span>
+              <h3 className="mt-3 font-display text-[22px] font-[400] text-text">Grounded, not generated</h3>
+              <p className="mt-2.5 text-[14px] leading-[1.6] text-text-dim">
+                Every answer traces to a source. In engineering and government, a hallucination is a
+                safety issue, not a bug — which is why RAG, citations, and audit trails are the core
+                of our platform, not an add-on.
+              </p>
+            </div>
+            <div className="border-t border-line pt-6">
+              <span className="font-display text-[15px] text-accent">03</span>
+              <h3 className="mt-3 font-display text-[22px] font-[400] text-text">Governed by default</h3>
+              <p className="mt-2.5 text-[14px] leading-[1.6] text-text-dim">
+                Permissions, policy, and audit are built into every interaction. Agencies can adopt
+                AI without giving up control — that is the point of GovSlack.
+              </p>
+            </div>
+            <div className="border-t border-line pt-6">
+              <span className="font-display text-[15px] text-accent">04</span>
+              <h3 className="mt-3 font-display text-[22px] font-[400] text-text">For the people who run the world</h3>
+              <p className="mt-2.5 text-[14px] leading-[1.6] text-text-dim">
+                City staff, engineers, inspectors, and operators — not demo rooms. If it does not
+                make their work faster and safer, it does not ship.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About */}
+      <section id="about" className="mx-auto max-w-6xl px-6 py-24 sm:px-8">
+        <div className="grid items-start gap-14 lg:grid-cols-[1fr_1.2fr]">
+          <div>
+            <p className="text-[12px] uppercase tracking-[0.22em] text-accent">About</p>
+            <h2 className="mt-4 font-display text-[40px] font-[340] text-text">
+              Built in Austin, deployed across the <em className="italic text-accent">built</em> world.
+            </h2>
+          </div>
+          <div className="max-w-xl">
+            <p className="text-[15px] leading-[1.7] text-text-dim">
+              Ethereal Dimension is a frontier-AI company deploying computer vision, AR, and agentic
+              intelligence into cities and infrastructure. We work with public agencies, engineering
+              teams, and operators who need systems they can verify — not black boxes.
+            </p>
+            <p className="mt-4 text-[15px] leading-[1.7] text-text-dim">
+              From the Austin DoT barricade detection deployment to Hylios on the App Store to
+              Ethereal Search for engineering documents, we build across the full stack: models,
+              agents, and the governed interfaces that make them usable in the real world.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-x-10 gap-y-4 border-t border-line pt-6 text-[12px] uppercase tracking-[0.14em] text-text-dim">
+              <span>Austin, TX</span>
+              <span>Remote team</span>
+              <a href="mailto:info@etherealdimension.io" className="text-accent hover:text-text">
+                info@etherealdimension.io
+              </a>
+            </div>
           </div>
         </div>
       </section>

@@ -18,6 +18,11 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Keep anchored sections clear of the sticky header */
+section[id] {
+  scroll-margin-top: 88px;
+}
+
 body {
   background: var(--color-ink);
   color: var(--color-text);
