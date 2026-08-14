@@ -82,7 +82,7 @@ function EtherealSearchContent() {
               <Button
                 size="lg"
                 variant="outline"
-                className="w-full border-[var(--ethereal-cyan)]/50 px-7 py-4 text-[var(--ethereal-cyan)] hover:bg-[var(--ethereal-cyan)]/10 sm:w-auto"
+                className="w-full border-[var(--ethereal-cyan)]/50 bg-transparent px-7 py-4 text-[var(--ethereal-cyan)] hover:bg-[var(--ethereal-cyan)]/10 sm:w-auto"
               >
                 Launch Embedded Demo
               </Button>
@@ -91,7 +91,7 @@ function EtherealSearchContent() {
               <Button
                 size="lg"
                 variant="outline"
-                className="w-full border-white/20 px-7 py-4 text-white hover:bg-white/10 sm:w-auto"
+                className="w-full border-white/20 bg-transparent px-7 py-4 text-white hover:bg-white/10 sm:w-auto"
               >
                 View Concepts
               </Button>
@@ -144,7 +144,7 @@ function EtherealSearchContent() {
             <Button
               size="lg"
               variant="outline"
-              className="border-white/20 text-white hover:bg-white/10 w-full sm:w-auto"
+              className="border-white/20 bg-transparent text-white hover:bg-white/10 w-full sm:w-auto"
             >
               <ArrowLeft className="mr-2 h-5 w-5" />
               Back to Home
