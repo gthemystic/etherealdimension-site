@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import NavBar from "@/components/NavBar";
+import { EtherealSearchSection } from "@/components/EtherealSearchSection";
 import { getSiteConfig } from "@/lib/site-config";
 
 const stack = [
@@ -18,7 +19,7 @@ const questions = [
     q: "What's hiding in your engineering documents?",
     a: "Ask anything across specs, drawings, and infrastructure records — grounded answers with citations.",
     cta: "Search your universe",
-    href: "https://ethereal-dimension-search.vercel.app",
+    href: "#ethereal-search",
     tag: "Ethereal Search",
   },
   {
@@ -218,9 +219,7 @@ export default async function Home() {
           {/* Ethereal Search — live product */}
           <article className="overflow-hidden rounded-[10px] border border-line bg-ink-2">
             <a
-              href="https://ethereal-dimension-search.vercel.app"
-              target="_blank"
-              rel="noreferrer"
+              href="#ethereal-search"
               className="block"
             >
               <div className="relative flex h-[200px] items-center justify-center overflow-hidden bg-gradient-to-br from-[#0E1A22] to-ink">
@@ -342,6 +341,9 @@ export default async function Home() {
           </article>
         </div>
       </section>
+
+      {/* Ethereal Search — live embedded product */}
+      <EtherealSearchSection />
 
       {/* Hylios */}
       <section id="hylios" className="mx-auto max-w-6xl px-6 pb-24 sm:px-8">
