@@ -29,7 +29,9 @@ export const defaultSiteConfig: SiteConfig = {
     { label: "Work", href: "#work" },
     { label: "Hylios", href: "#hylios" },
     { label: "Ethereal Search", href: "#ethereal-search" },
-    { label: "Company", href: "#cta" },
+    { label: "Philosophy", href: "#philosophy" },
+    { label: "About", href: "#about" },
+    { label: "Contact", href: "#cta" },
   ],
   products: [
     { label: "Hylios", desc: "AR + ML room scanner for iPhone", href: "#hylios" },
@@ -40,8 +42,8 @@ export const defaultSiteConfig: SiteConfig = {
   cta: { label: "Partner with us", href: "#cta" },
   hero: {
     eyebrow: "Frontier AI for the built environment · Austin, TX",
-    title: "Intelligence for the built world — deployed, not demoed.",
-    body: "We deploy computer vision, AR, and spatial intelligence into cities and infrastructure — live systems for compliance, safety, and understanding of physical space.",
+    title: "Intelligence that reads, remembers — and acts on the built world.",
+    body: "We build agentic systems that search, reason, and orchestrate across engineering documents, city infrastructure, supply chains, and physical space.",
     primaryCta: { label: "See our work", href: "#work" },
     secondaryCta: { label: "Explore Ethereal Search →", href: "#ethereal-search" },
   },

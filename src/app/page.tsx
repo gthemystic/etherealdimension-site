@@ -24,7 +24,13 @@ export default async function Home() {
           {siteConfig.hero.eyebrow}
         </p>
         <h1 className="rise rise-2 mt-6 max-w-4xl font-display text-[44px] font-[340] leading-[1.02] tracking-[-0.02em] text-text sm:text-[64px] lg:text-[84px]">
-          {siteConfig.hero.title}
+          {siteConfig.hero.title.includes("reads, remembers") ? (
+            <>
+              Intelligence that <em className="italic text-accent">reads, remembers</em> — and acts on the built world.
+            </>
+          ) : (
+            siteConfig.hero.title
+          )}
         </h1>
         <p className="rise rise-3 mt-7 max-w-[560px] text-[17px] leading-[1.65] text-text-dim">
           {siteConfig.hero.body}
@@ -156,6 +162,60 @@ export default async function Home() {
               className="h-[760px] w-full bg-ink"
               loading="lazy"
             />
+          </div>
+        </div>
+      </section>
+
+
+      {/* Philosophy */}
+      <section id="philosophy" className="border-y border-line bg-ink-2/40">
+        <div className="mx-auto max-w-6xl px-6 py-24 sm:px-8">
+          <div className="max-w-3xl">
+            <p className="text-[12px] uppercase tracking-[0.22em] text-accent">Philosophy</p>
+            <h2 className="mt-4 font-display text-[36px] font-[340] leading-[1.08] text-text sm:text-[44px]">
+              Useful intelligence earns trust through <em className="italic text-accent">restraint</em>.
+            </h2>
+            <p className="mt-6 max-w-2xl text-[15px] leading-[1.7] text-text-dim">
+              Cities, infrastructure, and engineering records are not demo environments. We build systems that are grounded in source material, auditable by operators, and quiet where reliability matters more than spectacle.
+            </p>
+          </div>
+          <div className="mt-14 grid gap-10 md:grid-cols-3">
+            <div className="border-t border-line pt-6">
+              <span className="font-display text-[15px] text-accent">01</span>
+              <h3 className="mt-3 font-display text-[22px] font-[400] text-text">Grounded answers</h3>
+              <p className="mt-2.5 text-[14px] leading-[1.6] text-text-dim">Every answer traces back to documents, drawings, video, or operational records.</p>
+            </div>
+            <div className="border-t border-line pt-6">
+              <span className="font-display text-[15px] text-accent">02</span>
+              <h3 className="mt-3 font-display text-[22px] font-[400] text-text">Human control</h3>
+              <p className="mt-2.5 text-[14px] leading-[1.6] text-text-dim">Agents accelerate review and retrieval without replacing the people responsible for decisions.</p>
+            </div>
+            <div className="border-t border-line pt-6">
+              <span className="font-display text-[15px] text-accent">03</span>
+              <h3 className="mt-3 font-display text-[22px] font-[400] text-text">Built for operators</h3>
+              <p className="mt-2.5 text-[14px] leading-[1.6] text-text-dim">Interfaces stay practical: search, cite, inspect, export, and act.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About */}
+      <section id="about" className="mx-auto max-w-6xl px-6 py-24 sm:px-8">
+        <div className="grid items-start gap-14 lg:grid-cols-[1fr_1.2fr]">
+          <div>
+            <p className="text-[12px] uppercase tracking-[0.22em] text-accent">About</p>
+            <h2 className="mt-4 font-display text-[40px] font-[340] text-text">
+              Austin-built AI for cities, infrastructure, and the <em className="italic text-accent">built</em> world.
+            </h2>
+          </div>
+          <div className="max-w-xl">
+            <p className="text-[15px] leading-[1.7] text-text-dim">
+              Ethereal Dimension builds computer vision, AR, and agentic search products for teams that work with physical space and complex records — from Austin DoT barricade detection to Hylios room scanning to Ethereal Search for engineering documents.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-x-10 gap-y-4 border-t border-line pt-6 text-[12px] uppercase tracking-[0.14em] text-text-dim">
+              <span>Austin, TX</span>
+              <a href="mailto:info@etherealdimension.io" className="text-accent hover:text-text">info@etherealdimension.io</a>
+            </div>
           </div>
         </div>
       </section>
