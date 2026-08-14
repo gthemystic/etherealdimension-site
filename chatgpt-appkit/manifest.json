@@ -1,0 +1,8 @@
+{
+  "name": "Ethereal Engineering RAG Search",
+  "description": "Smart RAG search over engineering documents, P&IDs, specs, and diagrams. Ask about components (e.g. hydraulic pumps), circuit diagrams (e.g. MOSFETs), or P&ID drawings (e.g. cooling systems).",
+  "version": "0.1.0",
+  "mcpEndpoint": "/mcp",
+  "publisher": "Ethereal Dimension",
+  "homepage": "https://etherealdimension.io/ethereal-search"
+}

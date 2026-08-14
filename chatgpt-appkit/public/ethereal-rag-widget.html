@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ethereal Engineering RAG</title>
+  <style>
+    :root {
+      --ethereal-cyan: #22d3ee;
+      --ethereal-green: #34d399;
+      --bg-dark: #030712;
+      --bg-card: rgba(255,255,255,0.03);
+      --border: rgba(255,255,255,0.08);
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg-dark);
+      color: var(--text);
+      padding: 12px;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .title { font-size: 1.1em; font-weight: 600; color: var(--ethereal-cyan); margin-bottom: 12px; }
+    .query { color: var(--text-muted); font-size: 0.9em; margin-bottom: 12px; }
+    .specs { display: grid; gap: 8px; margin-bottom: 12px; }
+    .spec { display: flex; justify-content: space-between; gap: 12px; }
+    .spec-label { color: var(--text-muted); }
+    .spec-value { font-weight: 500; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 0.85em; background: rgba(34,211,238,0.15); color: var(--ethereal-cyan); }
+    .sources { margin-top: 12px; }
+    .sources-title { font-size: 0.9em; color: var(--text-muted); margin-bottom: 6px; }
+    .source-list { display: flex; flex-wrap: wrap; gap: 6px; }
+    .source { padding: 4px 10px; background: var(--bg-card); border-radius: 6px; font-size: 0.85em; }
+    .reasoning { margin-top: 12px; }
+    .reasoning-title { font-size: 0.9em; color: var(--text-muted); margin-bottom: 8px; }
+    .step { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.9em; }
+    .step:last-child { border-bottom: none; }
+    .step-text { font-weight: 500; margin-bottom: 2px; }
+    .step-detail { color: var(--text-muted); font-size: 0.85em; }
+    .empty { color: var(--text-muted); font-style: italic; }
+    .logo { font-size: 0.8em; color: var(--text-muted); margin-top: 12px; }
+  </style>
+</head>
+<body>
+  <div id="root" class="card">
+    <div class="empty">Waiting for search results…</div>
+  </div>
+  <script>
+    (function() {
+      function render(data) {
+        if (!data || !data.answer) {
+          document.getElementById('root').innerHTML = '<div class="empty">No results yet.</div>';
+          return;
+        }
+        var a = data.answer, r = data.reasoning || {}, u = data.understanding || {};
+        var html = '';
+        if ( data.query ) html += '<div class="query">Query: ' + escapeHtml(data.query) + '</div>';
+        html += '<div class="title">' + escapeHtml(a.title) + '</div>';
+        if ( a.specs && a.specs.length ) {
+          html += '<div class="specs">';
+          a.specs.forEach(function(s) {
+            html += '<div class="spec"><span class="spec-label">' + escapeHtml(s.label) + '</span><span class="spec-value">' + escapeHtml(s.value) + '</span></div>';
+          });
+          html += '</div>';
+        }
+        if ( a.status ) html += '<span class="badge">' + escapeHtml(a.status) + '</span>';
+        if ( a.sources && a.sources.length ) {
+          html += '<div class="sources"><div class="sources-title">Sources</div><div class="source-list">';
+          a.sources.forEach(function(s) {
+            html += '<span class="source">' + escapeHtml(s.label) + ' (' + escapeHtml(s.type) + ')</span>';
+          });
+          html += '</div></div>';
+        }
+        if ( r.steps && r.steps.length ) {
+          html += '<div class="reasoning"><div class="reasoning-title">Reasoning</div>';
+          r.steps.forEach(function(s) {
+            html += '<div class="step"><div class="step-text">' + escapeHtml(s.text) + '</div><div class="step-detail">' + escapeHtml(s.detail || '') + '</div></div>';
+          });
+          html += '</div>';
+        }
+        html += '<div class="logo">Ethereal Engineering RAG · etherealdimension.io</div>';
+        document.getElementById('root').innerHTML = html;
+      }
+      function escapeHtml(s) {
+        if (s == null) return '';
+        var d = document.createElement('div');
+        d.textContent = String(s);
+        return d.innerHTML;
+      }
+      function poll() {
+        var out = (window.openai && window.openai.toolOutput) ? window.openai.toolOutput : null;
+        if (out && typeof out === 'object') {
+          var data = out.structuredContent || out;
+          render(data);
+          return;
+        }
+        setTimeout(poll, 100);
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', poll);
+      } else {
+        poll();
+      }
+    })();
+  </script>
+</body>
+</html>
