@@ -48,3 +48,4 @@ Rules: one accent at a time. Never gradient text. Text on accent buttons is `ink
 - Don't use "cards in cards"; keep hierarchy flat.
 - Ethereal Search follows the **Evidence Desk** pattern: show a query, its provisional answer, and its source trail in one view. Product-direction examples must be explicitly illustrative until product claims are confirmed.
 - Every interactive element receives a clear teal focus outline, and every public surface offers a skip link to the document’s main content.
+- The approved Ethereal Search direction is **Field Thread**: a 36/64 split decision record, with the inquiry framing on the left and a vertically connected, numbered sequence of question, support, conflict, and next step on the right.
