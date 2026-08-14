@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import NavBar from "@/components/NavBar";
+import { getSiteConfig } from "@/lib/site-config";
 
 const stack = [
   "RAG",
@@ -76,35 +77,39 @@ const capabilities = [
   },
 ];
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
+export default async function Home() {
+  const siteConfig = await getSiteConfig();
+
   return (
     <>
-      <NavBar />
+      <NavBar initialConfig={siteConfig} />
 
       {/* Hero — agentic platform front and center */}
       <section className="mx-auto max-w-6xl px-6 pt-24 pb-16 sm:px-8 sm:pt-32">
         <p className="rise rise-1 text-[12px] uppercase tracking-[0.22em] text-accent">
-          Agentic AI · RAG · LangChain · Graph · Memory
+          {siteConfig.hero.eyebrow}
         </p>
         <h1 className="rise rise-2 mt-6 max-w-4xl font-display text-[44px] font-[340] leading-[1.02] tracking-[-0.02em] text-text sm:text-[64px] lg:text-[84px]">
-          Intelligence that <em className="italic text-accent">reads, remembers</em> — and acts on the built world.
+          {siteConfig.hero.title}
         </h1>
         <p className="rise rise-3 mt-7 max-w-[560px] text-[17px] leading-[1.65] text-text-dim">
-          We build agentic systems that search, reason, and orchestrate across engineering documents,
-          supply chains, and physical space — RAG, LangChain, agent memory, and Graph RAG, deployed in production.
+          {siteConfig.hero.body}
         </p>
         <div className="rise rise-4 mt-10 flex flex-wrap items-center gap-4">
           <a
-            href="#questions"
+            href={siteConfig.hero.primaryCta.href}
             className="rounded-md bg-accent px-6 py-3.5 text-[14px] font-semibold text-ink transition-opacity hover:opacity-90"
           >
-            What can we build for you?
+            {siteConfig.hero.primaryCta.label}
           </a>
           <a
-            href="#platform"
+            href={siteConfig.hero.secondaryCta.href}
             className="rounded-md border border-line px-6 py-3.5 text-[14px] text-text transition-colors hover:border-text-dim"
           >
-            Explore the platform →
+            {siteConfig.hero.secondaryCta.label}
           </a>
         </div>
         <div className="rise rise-5 mt-12 flex flex-wrap gap-2">

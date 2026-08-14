@@ -1,30 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-
-const products = [
-  {
-    label: "Hylios",
-    desc: "AR + ML room scanner for iPhone",
-    href: "#hylios",
-  },
-  {
-    label: "Ethereal Search",
-    desc: "Agentic RAG for engineering teams",
-    href: "/ethereal-search",
-  },
-  {
-    label: "TracePass",
-    desc: "Supply-chain provenance, RAG-powered",
-    href: "#tracepass",
-  },
-  {
-    label: "GovSlack",
-    desc: "Governed AI workspaces for agencies",
-    href: "#govslack",
-  },
-];
+import { defaultSiteConfig, type SiteConfig } from "@/lib/site-config";
 
 const productSectionIds = ["hylios", "tracepass", "govslack"];
 
@@ -35,17 +13,50 @@ const tabClass = (isActive: boolean) =>
       : "text-text-dim after:scale-x-0 hover:text-text hover:after:scale-x-100"
   }`;
 
-export default function NavBar() {
+function isInternalRoute(href: string) {
+  return href.startsWith("/");
+}
+
+export default function NavBar({ initialConfig = defaultSiteConfig }: { initialConfig?: SiteConfig }) {
+  const [config, setConfig] = useState(initialConfig);
   const [active, setActive] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
 
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/site-config", { cache: "no-store" })
+      .then((response) => (response.ok ? response.json() : null))
+      .then((nextConfig: SiteConfig | null) => {
+        if (!cancelled && nextConfig) setConfig(nextConfig);
+      })
+      .catch(() => undefined);
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const sectionIds = useMemo(() => {
+    const anchors = [
+      ...config.navItems.map((item) => item.href),
+      ...config.products.map((item) => item.href),
+      config.cta.href,
+    ];
+    return Array.from(
+      new Set(
+        anchors
+          .filter((href) => href.startsWith("#"))
+          .map((href) => href.slice(1))
+          .filter(Boolean),
+      ),
+    );
+  }, [config]);
+
   // Scroll-spy: highlight the section currently under the sticky header line.
   useEffect(() => {
-    const ids = ["work", "hylios", "philosophy", "about", "cta"];
     const onScroll = () => {
       const line = 160;
       let current = "";
-      for (const id of ids) {
+      for (const id of sectionIds) {
         const el = document.getElementById(id);
         if (el && el.getBoundingClientRect().top <= line) current = id;
       }
@@ -58,7 +69,7 @@ export default function NavBar() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
-  }, []);
+  }, [sectionIds]);
 
   const productsActive = productSectionIds.includes(active);
 
@@ -74,9 +85,11 @@ export default function NavBar() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-9 md:flex">
-          <a href="#work" className={tabClass(active === "work")}>
-            Work
-          </a>
+          {config.navItems.slice(0, 1).map((item) => (
+            <a key={`${item.label}-${item.href}`} href={item.href} className={tabClass(active === item.href.replace(/^#/, ""))}>
+              {item.label}
+            </a>
+          ))}
 
           {/* Products dropdown */}
           <div className="group relative">
@@ -91,36 +104,49 @@ export default function NavBar() {
             </button>
             <div className="invisible absolute left-1/2 top-full z-30 mt-4 w-64 -translate-x-1/2 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
               <div className="rounded-[10px] border border-line bg-ink-2 p-2">
-                {products.map((p) => (
-                  <Link
-                    key={p.label}
-                    href={p.href}
-                    className="flex flex-col gap-0.5 rounded-lg px-4 py-3 transition-colors hover:bg-ink"
-                  >
-                    <span className="text-[13px] font-semibold text-text">
-                      {p.label}
-                    </span>
-                    <span className="text-[12px] text-text-dim">{p.desc}</span>
-                  </Link>
-                ))}
+                {config.products.map((p) => {
+                  const content = (
+                    <>
+                      <span className="text-[13px] font-semibold text-text">{p.label}</span>
+                      <span className="text-[12px] text-text-dim">{p.desc}</span>
+                    </>
+                  );
+
+                  return isInternalRoute(p.href) ? (
+                    <Link
+                      key={`${p.label}-${p.href}`}
+                      href={p.href}
+                      className="flex flex-col gap-0.5 rounded-lg px-4 py-3 transition-colors hover:bg-ink"
+                    >
+                      {content}
+                    </Link>
+                  ) : (
+                    <a
+                      key={`${p.label}-${p.href}`}
+                      href={p.href}
+                      className="flex flex-col gap-0.5 rounded-lg px-4 py-3 transition-colors hover:bg-ink"
+                    >
+                      {content}
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </div>
 
-          <a href="#philosophy" className={tabClass(active === "philosophy")}>
-            Philosophy
-          </a>
-          <a href="#about" className={tabClass(active === "about")}>
-            About
-          </a>
+          {config.navItems.slice(1).map((item) => (
+            <a key={`${item.label}-${item.href}`} href={item.href} className={tabClass(active === item.href.replace(/^#/, ""))}>
+              {item.label}
+            </a>
+          ))}
         </nav>
 
         <div className="flex items-center gap-3">
           <a
-            href="#cta"
+            href={config.cta.href}
             className="hidden rounded-full bg-accent px-[18px] py-2 text-[12.5px] font-semibold text-ink transition-opacity hover:opacity-90 md:inline-block"
           >
-            Partner with us
+            {config.cta.label}
           </a>
           {/* Mobile toggle */}
           <button
@@ -139,13 +165,9 @@ export default function NavBar() {
       {menuOpen && (
         <nav className="border-t border-line bg-ink/95 px-6 py-5 md:hidden">
           <div className="flex flex-col gap-1">
-            {[
-              { label: "Work", href: "#work" },
-              { label: "Philosophy", href: "#philosophy" },
-              { label: "About", href: "#about" },
-            ].map((t) => (
+            {config.navItems.map((t) => (
               <a
-                key={t.label}
+                key={`${t.label}-${t.href}`}
                 href={t.href}
                 onClick={() => setMenuOpen(false)}
                 className="rounded-md px-3 py-2.5 text-[13px] uppercase tracking-[0.18em] text-text-dim hover:text-text"
@@ -157,24 +179,24 @@ export default function NavBar() {
               <p className="px-3 pb-1 pt-1 text-[10px] uppercase tracking-[0.22em] text-text-dim">
                 Products
               </p>
-              {products.map((p) => (
-                <Link
-                  key={p.label}
+              {config.products.map((p) => (
+                <a
+                  key={`${p.label}-${p.href}`}
                   href={p.href}
                   onClick={() => setMenuOpen(false)}
                   className="block rounded-md px-3 py-2.5 text-[13px] text-text hover:bg-ink-2"
                 >
                   {p.label}
                   <span className="ml-2 text-[12px] text-text-dim">{p.desc}</span>
-                </Link>
+                </a>
               ))}
             </div>
             <a
-              href="#cta"
+              href={config.cta.href}
               onClick={() => setMenuOpen(false)}
               className="mt-3 rounded-full bg-accent px-4 py-2.5 text-center text-[12.5px] font-semibold text-ink"
             >
-              Partner with us
+              {config.cta.label}
             </a>
           </div>
         </nav>
