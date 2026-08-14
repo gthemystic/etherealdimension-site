@@ -2,8 +2,8 @@
 
 ## 01 · Overview
 Dark, editorial, disciplined. "Ethereal Editorial" — Direction A of the redesign proposals.
-Deep ink canvas with a single electric teal accent; serif display (Fraunces) for headlines,
-clean sans (Inter) for body. Image-led heroes use real deployment/product assets. Motion is
+Deep ink canvas with a single electric teal accent; editorial serif display (Iowan Old Style / Baskerville)
+for headlines, Avenir-derived sans for body. Image-led heroes use real deployment/product assets. Motion is
 purposeful (scroll/entrance, scan-line) and respects `prefers-reduced-motion`.
 This is the anti-pattern opposite of the previous neon-cyan/green "AI slop" look.
 
@@ -22,10 +22,10 @@ This is the anti-pattern opposite of the previous neon-cyan/green "AI slop" look
 Rules: one accent at a time. Never gradient text. Text on accent buttons is `ink` (contrast ✓).
 
 ## 03 · Typography
-- **Display:** Fraunces (serif), weight 340–400, italic for accent words. Headline sizes:
+- **Display:** Iowan Old Style / Baskerville (serif), weight 340–400, italic for accent words. Headline sizes:
   h1 `clamp(44px, 6.4vw, 84px)`, section h2 `36–44px`, card h3 `22px`.
-- **Body/UI:** Inter, 13–17px. Eyebrows: 12px, `letter-spacing 0.22em`, uppercase, accent.
-- **Numbers/stats:** Fraunces, 34px, `paper` color.
+- **Body/UI:** Avenir-derived sans, 13–17px. Context labels remain sentence case and avoid generic eyebrow treatments.
+- **Numbers/stats:** Iowan Old Style / Baskerville, 34px, `paper` color.
 - Line height: display `1.02–1.08`; body `1.6–1.7`. Tracking: display `-0.02em`.
 
 ## 04 · Elevation
@@ -46,3 +46,5 @@ Rules: one accent at a time. Never gradient text. Text on accent buttons is `ink
 - Don't add more neon colors, gradient text, marquees, floating particles, or decorative animations.
 - Don't invent stats — every number must be real (currently 97.2%, 60%, 24/7 from the Austin DoT system).
 - Don't use "cards in cards"; keep hierarchy flat.
+- Ethereal Search follows the **Evidence Desk** pattern: show a query, its provisional answer, and its source trail in one view. Product-direction examples must be explicitly illustrative until product claims are confirmed.
+- Every interactive element receives a clear teal focus outline, and every public surface offers a skip link to the document’s main content.

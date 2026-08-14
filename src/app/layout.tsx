@@ -1,3 +1,4 @@
+/** Ethereal Editorial app shell — restrained title metadata and dark-first document foundation. */
 import type { Metadata } from "next";
 import "./globals.css";
 
