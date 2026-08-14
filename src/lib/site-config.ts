@@ -27,8 +27,9 @@ export type SiteConfig = {
 export const defaultSiteConfig: SiteConfig = {
   navItems: [
     { label: "Work", href: "#work" },
-    { label: "Philosophy", href: "#philosophy" },
-    { label: "About", href: "#about" },
+    { label: "Hylios", href: "#hylios" },
+    { label: "Ethereal Search", href: "#ethereal-search" },
+    { label: "Company", href: "#cta" },
   ],
   products: [
     { label: "Hylios", desc: "AR + ML room scanner for iPhone", href: "#hylios" },
@@ -38,13 +39,13 @@ export const defaultSiteConfig: SiteConfig = {
   ],
   cta: { label: "Partner with us", href: "#cta" },
   hero: {
-    eyebrow: "Agentic AI · RAG · LangChain · Graph · Memory",
-    title: "Intelligence that reads, remembers — and acts on the built world.",
-    body: "We build agentic systems that search, reason, and orchestrate across engineering documents, supply chains, and physical space — RAG, LangChain, agent memory, and Graph RAG, deployed in production.",
-    primaryCta: { label: "What can we build for you?", href: "#questions" },
-    secondaryCta: { label: "Explore the platform →", href: "#platform" },
+    eyebrow: "Frontier AI for the built environment · Austin, TX",
+    title: "Intelligence for the built world — deployed, not demoed.",
+    body: "We deploy computer vision, AR, and spatial intelligence into cities and infrastructure — live systems for compliance, safety, and understanding of physical space.",
+    primaryCta: { label: "See our work", href: "#work" },
+    secondaryCta: { label: "Explore Ethereal Search →", href: "#ethereal-search" },
   },
-  flags: {},
+  flags: { productsDropdown: false },
 };
 
 type VercelEnv = {
